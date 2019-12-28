@@ -5,16 +5,10 @@ import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
-@NamedQueries({
-        @NamedQuery(name = Note.ALL_SORTED, query = "SELECT m FROM Note m WHERE m.user.id=:userId ORDER BY m.name DESC"),
-        @NamedQuery(name = Note.BY_NUMBER, query = "SELECT m FROM Note m WHERE m.user.id=:userId AND m.number=?1"),
-        @NamedQuery(name = Note.DELETE, query = "DELETE FROM Note m WHERE m.id=:id AND m.user.id=:userId")})
+
 @Entity
 @Table(name = "NOTES")
 public class Note extends AbstractNamedEntity {
-    public static final String ALL_SORTED = "Note.getAll";
-    public static final String DELETE = "Note.delete";
-    public static final String BY_NUMBER = "Note.getByNumber";
 
     @Column(name = "number",nullable = false)
     private String number;

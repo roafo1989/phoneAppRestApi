@@ -2,11 +2,8 @@ package com.example.phonebase.service;
 
 import com.example.phonebase.dao.NoteDAO;
 import com.example.phonebase.model.Note;
-import com.example.phonebase.to.NoteTo;
-import com.example.phonebase.util.NoteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 
@@ -54,13 +51,4 @@ public class NoteService {
         return repos.findById(id).orElse(null);
     }
 
-
-
-/*    public List<Note> getByNumber(long number, int userId) {
-        Assert.notNull(number,"number must be not null");
-        return checkNotFound(repos.getByNumber(number, userId),"number: ");
-    }
-    public Note getWithUser(int id, int userId){
-        return checkNotFoundWithId(repos.getWithUser(id, userId), id);
-    }*/
 }

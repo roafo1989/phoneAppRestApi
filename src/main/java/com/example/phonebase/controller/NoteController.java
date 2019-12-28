@@ -1,9 +1,7 @@
 package com.example.phonebase.controller;
 
 import com.example.phonebase.model.Note;
-import com.example.phonebase.model.User;
 import com.example.phonebase.service.NoteService;
-import com.example.phonebase.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -64,12 +62,6 @@ public class NoteController {
         }
         this.service.create(note);
         return new ResponseEntity<>(note,headers,HttpStatus.CREATED);
-
-       /* User created = service.create(note);
-        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(REST_URL + "/{id}")
-                .buildAndExpand(created.getId()).toUri();
-        return ResponseEntity.created(uriOfNewResource).body(created);*/
 
     }
 }

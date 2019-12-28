@@ -62,12 +62,5 @@ public class UserController {
         }
         this.service.create(user);
         return new ResponseEntity<>(user,headers,HttpStatus.CREATED);
-
-       /* User created = service.create(user);
-        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(REST_URL + "/{id}")
-                .buildAndExpand(created.getId()).toUri();
-        return ResponseEntity.created(uriOfNewResource).body(created);*/
-
     }
 }
