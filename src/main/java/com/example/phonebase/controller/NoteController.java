@@ -37,6 +37,11 @@ public class NoteController {
         return service.getById(id);
     }
 
+    @GetMapping("/by")
+    public Note getByNote(@RequestParam String number){
+        return service.getByNumber(number);
+    }
+
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {

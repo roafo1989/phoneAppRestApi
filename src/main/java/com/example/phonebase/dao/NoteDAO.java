@@ -15,4 +15,6 @@ public interface NoteDAO extends JpaRepository<Note, Integer> {
     @Modifying
     @Query("DELETE FROM Note u WHERE u.id=:id")
     int delete(@Param("id") int id);
+
+    Note findNoteByNumber(@Param("number") String number);
 }

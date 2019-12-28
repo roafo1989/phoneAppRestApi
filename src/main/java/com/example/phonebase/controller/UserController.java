@@ -35,6 +35,11 @@ public class UserController {
         return service.getById(id);
     }
 
+    @GetMapping("/by")
+    public List<User> getByName(@RequestParam String name){
+        return service.findByName(name);
+    }
+
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {

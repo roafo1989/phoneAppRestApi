@@ -5,11 +5,11 @@ import com.example.phonebase.model.User;
 import com.example.phonebase.to.UserTo;
 import com.example.phonebase.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.phonebase.util.ValidationUtil.checkNotFound;
@@ -17,6 +17,7 @@ import static com.example.phonebase.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class UserService {
+
     private UserDAO repository;
     @Autowired
     public void setRepository(UserDAO repository) {
@@ -36,6 +37,19 @@ public class UserService {
     public void update(User user) {
         Assert.notNull(user,"user must be not null");
         repository.save(user);
+    }
+
+    public List<User> findByName(String name){
+        List<User> resultList = new ArrayList<>();
+        List<User> users = repository.findAll();
+        for(User u : users){
+            if (u.getName().toLowerCase().contains(name.toLowerCase())){
+                resultList.add(u);
+            }
+        }
+        return resultList;
+/*        Assert.notNull(name,"name must be not null");
+        return checkNotFound(repository.getByName(name),"name is " + name);*/
     }
 
     @Transactional
@@ -59,6 +73,8 @@ public class UserService {
         user.setEnabled(enabled);
         repository.save(user);  // !! need only for JDBC implementation
     }
+
+
 
 
 

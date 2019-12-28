@@ -29,6 +29,11 @@ public class NoteService {
         return repos.findAll();
     }
 
+    public Note getByNumber(String number) {
+        Assert.notNull(number,"number must be not null");
+        return checkNotFound(repos.findNoteByNumber(number),"number: ");
+    }
+
     public Note create(Note note) {
         Assert.notNull(note, "note must not be null");
         return repos.save(note);
